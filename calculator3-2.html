@@ -19,30 +19,7 @@
             margin-left: 125px;
         }
     </style>
-    <script>
-        function run() {
-            const str1 = document.getElementById('n1').value;
-            const str2 = document.getElementById('n2').value;
-            const op = document.getElementById('op').value;
-            const n1 = Number(str1);
-            const n2 = Number(str2);
-            const out = document.getElementById('output');
-            let str = "";
-            if (op === "+") {
-                str += "더하기: " + (n1 + n2) + "<br>";
-            } else if (op === "-") {
-                str += "빼기: " + (n1 - n2) + "<br>";
-            } else if (op === "*") {
-                str += "곱하기: " + (n1 * n2) + "<br>";
-            } else if (op === "/") {
-                str += "나누기: " + (n1 / n2) + "<br>";
-            } else {
-                str += "연산자는 사칙연산자만 입력해 주세요";
-            }
-            out.innerHTML = str;
-        }
-        run();
-    </script>
+
 </head>
 
 <body>
@@ -56,6 +33,35 @@
         </div>
         <div class="st" id="output"></div>
     </div>
+    <script>
+        function run() {
+            const str1 = document.getElementById('n1').value;
+            const str2 = document.getElementById('n2').value;
+            const op = document.getElementById('op').value;
+            const n1 = Number(str1);
+            const n2 = Number(str2);
+            const out = document.getElementById('output');
+            let str = "";
+            switch (op) {
+                case "+":
+                    str += "더하기: " + (n1 + n2) + "<br>";
+                    break;
+                case "-":
+                    str += "빼기: " + (n1 - n2) + "<br>";
+                    break;
+                case "*":
+                    str += "곱하기: " + (n1 * n2) + "<br>";
+                    break;
+                case "/":
+                    str += "나누기: " + (n1 / n2) + "<br>";
+                    break;
+                default:
+                    str += "연산자는 사칙연산자만 입력해 주세요";
+            }
+            out.innerHTML = str;
+            run();
+        }
+    </script>
 </body>
 
 </html>
