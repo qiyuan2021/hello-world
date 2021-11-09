@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator2</title>
+</head>
+
+<body>
+    <h1>문자열 계산기 구현하기</h1>
+    <div id="output"></div>
+    <script>
+        var str = [];
+        var str = prompt("쉼표를 기준으로 숫자 2개를 입력하세요. 예:10,5");
+        const num = str.split(',');
+        num1 = Number(num[0]);
+        num2 = Number(num[1]);
+        function main() {
+            console.log("Calculator2");
+            const out = document.getElementById("output");
+            out.innerText = '계산기 2';
+
+            console.log(num1 + " + " + num2 + " = " + (num1 + num2));
+            console.log(num1 + " - " + num2 + " = " + (num1 - num2));
+            console.log(num1 + " * " + num2 + " = " + num1 * num2);
+            console.log(num1 + " / " + num2 + " = " + num1 / num2);
+
+            document.write(num1 + " + " + num2 + " = " + (num1 + num2) + "<br>");
+            document.write(num1 + " - " + num2 + " = " + (num1 - num2) + "<br>");
+            document.write(num1 + " * " + num2 + " = " + num1 * num2 + "<br>");
+            document.write(num1 + " / " + num2 + " = " + num1 / num2 + "<br>");
+        };
+
+        main();
+    </script>
+</body>
+
+</html>
