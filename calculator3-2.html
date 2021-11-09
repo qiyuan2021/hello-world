@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        .total {
+            width: 500px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .st {
+            text-align-last: left;
+            width: 300px;
+            margin-left: 125px;
+        }
+    </style>
+    <script>
+        function run() {
+            const str1 = document.getElementById('n1').value;
+            const str2 = document.getElementById('n2').value;
+            const op = document.getElementById('op').value;
+            const n1 = Number(str1);
+            const n2 = Number(str2);
+            const out = document.getElementById('output');
+            let str = "";
+            if (op === "+") {
+                str += "더하기: " + (n1 + n2) + "<br>";
+            } else if (op === "-") {
+                str += "빼기: " + (n1 - n2) + "<br>";
+            } else if (op === "*") {
+                str += "곱하기: " + (n1 * n2) + "<br>";
+            } else if (op === "/") {
+                str += "나누기: " + (n1 / n2) + "<br>";
+            } else {
+                str += "연산자는 사칙연산자만 입력해 주세요";
+            }
+            out.innerHTML = str;
+        }
+        run();
+    </script>
+</head>
+
+<body>
+    <div class="total">
+        <h1>문자열 계산기 구현하기</h1>
+        <div>
+            첫번째 숫자: <input type="text" id="n1"> <br> <br>
+            연산자: <input type="text" id="op"> <br> <br>
+            두번째 숫자: <input type="text" id="n2"> <br> <br>
+            <button class="btn" onclick="run()">계산</button> <br> <br> <br> <br>
+        </div>
+        <div class="st" id="output"></div>
+    </div>
+</body>
+
+</html>
