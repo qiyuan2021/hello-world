@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        .total {
+            width: 500px;
+            margin: auto;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="total">
+        <h1>문자열 계산기 구현하기</h1>
+        <div class="st" id="output"></div>
+    </div>
+    <script>
+        function getFirstValue() {
+            const n = Number(prompt("첫번째 값을 입력해주세요."));
+            return n;
+        }
+
+        let n = 2;
+        function getSecondValue() {
+            const num2 = Number(prompt(n + "번째 숫자를 입력해주세요."));
+            n++;
+            return num2;
+        }
+
+        function getOperator() {
+            while (true) {
+                var op = prompt("연산자를 입력해 주세요.");
+                if (op === "+" || op === "-" || op === "*" || op === "/" || op === "q") {
+                    break;
+                } else {
+                    alert("올바른 연산자를 입력해 주세요.");
+                }
+            }
+            return op;
+        }
+
+        function calculate(first, second, op) {
+            let ret;
+            if (op === "+") {
+                ret = first + second;
+            } else if (op === "-") {
+                ret = first - second;
+            } else if (op === "*") {
+                ret = first * second;
+            } else if (op === "/") {
+                ret = first / second;
+            };
+            return ret;
+        }
+
+        function print(value) {
+            return "최종 결과 값은 " + value + "입니다.";
+        }
+
+        function main() {
+            let result = getFirstValue();
+            while (true) {
+                var op = getOperator();
+                if (op === 'q') {
+                    break;
+                }
+                const num = getSecondValue();
+                result = calculate(result, num, op);
+            }
+            let output = document.getElementById('output');
+            output.innerHTML = print(result);
+        }
+        main();
+    </script>
+</body>
+
+</html>
