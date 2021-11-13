@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        .total {
+            width: 500px;
+            margin: auto;
+        }
+        .title{
+            text-align: center;
+        }
+
+        #output {
+            background-color: darkblue;
+            width: 460px;
+            height: 42px;
+            padding: 15px;
+            font-family: couriers;
+            font-size: 36px;
+            color: white;
+            margin-bottom: 15px;
+            border-radius: 10px;
+        }
+
+        button {
+            font-size: 28px;
+            background-color: gray;
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 5px 5px 5px gray;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="total">
+        <h2 class ="title">연습용 계산기</h2>
+        <div>
+            <div id="output">0</div>
+            <div id="btn1">
+                <button id="7" onclick='clickNum(event)'>7</button>
+                <button id="8" onclick='clickNum(event)'>8</button>
+                <button id="9" onclick='clickNum(event)'>9</button>
+                <button id="div" onclick='clickNum(event)'>÷</button>
+            </div>
+            <div id="btn2">
+                <button id="4" onclick='clickNum(event)'>4</button>
+                <button id="5" onclick='clickNum(event)'>5</button>
+                <button id="6" onclick='clickNum(event)'>6</button>
+                <button id="sub" onclick='clickNum(event)'>-</button>
+            </div>
+            <div id="btn3">
+                <button id="1" onclick='clickNum(event)'>1</button>
+                <button id="2" onclick='clickNum(event)'>2</button>
+                <button id="3" onclick='clickNum(event)'>3</button>
+                <button id="mul" onclick='clickNum(event)'>×</button>
+            </div>
+            <div id="btn4">
+                <button id="del" onclick='clickNum(event)'>AC</button>
+                <button id="0" onclick='clickNum(event)'>0</button>
+                <button id="equ" onclick='showResult(event)'>=</button>
+                <button id="plus" onclick='clickNum(event)'>+</button>
+            </div>
+        </div>
+    </div>
+    <script src='calcu-GUI.js'>
+    </script>
+</body>
+
+</html>
