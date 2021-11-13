@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        .total {
+            width: 500px;
+            margin: auto;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="total">
+        <h1>문자열 계산기 구현하기</h1>
+        <div id="output"></div>
+    </div>
+    <script>
+        var input = { count: 2 };
+        input.getFirstValue = function () {
+            const n = Number(prompt("1번째 값을 입력해주세요."));
+            return n;
+        };
+
+        input.getSecondValue = function () {
+            const num2 = Number(prompt(this.count + "번째 숫자를 입력해주세요."));
+            this.count++;
+            return num2;
+        };
+
+        input.getOperator = function () {
+            while (true) {
+                var op = prompt("연산자를 입력해 주세요.");
+                if (op === "+" || op === "-" || op === "*" || op === "/" || op === "") {
+                    break;
+                } else {
+                    alert("올바른 연산자를 입력해 주세요.");
+                }
+            }
+            return op;
+        };
+
+        var ouput = {};
+        output.out = document.getElementById('output');
+        output.print = function (value) {
+            this.out.innerHTML = "최종 결과 값은 " + value + "입니다.";
+        };
+
+        var calculator = {};
+        calculator.calculate = function (first, second, op) {
+            let ret;
+            if (op === "+") {
+                ret = first + second;
+            } else if (op === "-") {
+                ret = first - second;
+            } else if (op === "*") {
+                ret = first * second;
+            } else if (op === "/") {
+                ret = first / second;
+            };
+            return ret;
+        };
+
+        function main() {
+            let result = input.getFirstValue();
+            while (true) {
+                var op = input.getOperator();
+                if (op === '') {
+                    break;
+                }
+                const sec_num = input.getSecondValue();
+                result = calculator.calculate(result, sec_num, op);
+            }
+            output.print(result);
+        };
+        main();
+    </script>
+</body>
+
+</html>
