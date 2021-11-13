@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        .total {
+            width: 500px;
+            margin: auto;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="total">
+        <h1>문자열 계산기 구현하기</h1>
+        <div>
+            <input type="text" id="input"> <br> <br>
+            <button onclick="run()">계산</button> <br> <br> <br>
+        </div>
+        <div id="output">결과가 여기에 나옵니다.</div>
+    </div>
+    <script>
+        let input = {};
+
+        input.init = function (str) {
+            this.list = str.split(" ");
+        };
+
+        input.empty = function () {
+            return this.list.length === 0;
+        }
+
+        input.getValue = function () {
+            let str = this.list.shift();
+            const n = Number(str);
+            return n;
+        };
+
+        input.getOperator = function () {
+            let op = this.list.shift();
+            if (op === "+" || op === "-" || op === "*" || op === "/") {
+                return op;
+            } else {
+                return "$";
+            }
+        };
+
+        let calculator = {};
+        calculator.calculate = function (first, second, op) {
+            let ret;
+            if (op === "+") {
+                ret = first + second;
+            } else if (op === "-") {
+                ret = first - second;
+            } else if (op === "*") {
+                ret = first * second;
+            } else if (op === "/") {
+                ret = first / second;
+            } else {
+                return NaN;
+            }
+            return ret;
+        };
+
+        let ouput = {};
+        output.out = document.getElementById('output');
+
+        output.print = function (value) {
+            this.out.innerHTML = "최종 결과 값은 " + value + "입니다.";
+        };
+
+        function run() {
+            const str = document.getElementById('input').value;
+            input.init(str);
+            let result = input.getValue();
+            while (!input.empty()) {
+                let op = input.getOperator();
+                let second = input.getValue();
+                result = calculator.calculate(result, second, op);
+            }
+
+            output.print(result);
+        };
+    </script>
+</body>
+
+</html>
