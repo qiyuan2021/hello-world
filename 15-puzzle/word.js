@@ -3,13 +3,15 @@ const word1 = document.getElementById("word1"); //answer
 const word2 = document.getElementById("word2"); //buttons
 const check = document.getElementById('check'); //word1 === word2
 const progress = document.getElementById('progress'); // progress check
-
+var time = document.getElementById('time');
 //game object 
 const game = {
     'btnOb': [],
     'maxPlay': 3,
     'current': 0
 };
+
+game.startTime = Date.now();
 
 const random_words = 'APPLE,LINUX,AUDLT,BEGIN,BRAIN,BUILD,CHAIR,CREAM,HELLO,LOVER'
 game.R_words = random_words.split(',');
@@ -101,7 +103,9 @@ game.progress = function () {
         progress.innerHTML = str;
     }
     if (game.current == game.maxPlay) {
-        alert("Good! Thank you for playing");
+        var sec = (Date.now() - game.startTime) / 1000;
+        alert("Good! Your Record: " + sec + "sec");
+        clearInterval(x);
     }
 };
 
@@ -130,9 +134,16 @@ game.shuffle = function () {
         game.turnover();
     }
 
-    const n = Math.floor(Math.random() * (game.answer.length - 1));
+    const n = Math.floor(Math.random() * (game.answer.length));
     for (let i = 0; i < n; i++) {
         game.rshift();
     }
 };
 game.shuffle();
+
+var updateTime = function () {
+    var now = Date.now() - game.startTime;
+    time.innerHTML = (now / 1000) + "s";
+};
+
+var x = setInterval(updateTime, 50);
